@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--<item name="android:navigationBarColor">@android:color/white</item>-->
+        <!--<item name="android:statusBarColor">@android:color/transparent</item>-->
+        <!--&lt;!&ndash;windowTranslucentNavigation这个属性设置成true，则navigationBarColor设置会失效&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:windowTranslucentNavigation">false</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:windowFullscreen">true</item>&ndash;&gt;-->
+        <!--<item name="android:windowBackground">@mipmap/splash_bg1</item>-->
+    <!--</style>-->
+
+    <style name="AppTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+</resources>
