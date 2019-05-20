@@ -3,6 +3,7 @@ package com.raokii.multi_language.base;
 import android.app.Application;
 
 import com.raokii.multi_language.util.LanguageManager;
+import com.raokii.multi_language.util.SaveCacheData;
 
 /**
  * @author Rao
@@ -15,5 +16,6 @@ public class BaseApplication extends Application {
         super.onCreate();
         LanguageManager.register(this);
         LanguageManager.saveLanguage( LanguageManager.getSystemLanguage());
+        SaveCacheData.register(this);
     }
 }

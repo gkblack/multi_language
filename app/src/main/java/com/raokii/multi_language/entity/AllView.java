@@ -2,11 +2,13 @@ package com.raokii.multi_language.entity;
 
 import android.view.View;
 
+import java.io.Serializable;
+
 /**
  * @author Rao
  * @date 2019/4/2
  */
-public class AllView {
+public class AllView implements Serializable {
 
     public View view;
 

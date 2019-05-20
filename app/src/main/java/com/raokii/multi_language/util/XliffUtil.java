@@ -23,6 +23,11 @@ import java.util.List;
  */
 public class XliffUtil {
 
+    /**
+     * 遍历获取语言包文件内容
+     * @param context
+     * @return
+     */
     public static List<Lang> readXliff(Context context) {
         List<Lang> list = new ArrayList<>();
         SAXReader reader = new SAXReader();

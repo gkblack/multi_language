@@ -7,10 +7,17 @@ import android.widget.TextView;
 
 import com.raokii.multi_language.base.BaseActivity;
 import com.raokii.multi_language.entity.AllView;
+import com.raokii.multi_language.entity.Lang;
+import com.raokii.multi_language.util.ChangeLangEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 第一次进入时遍历获取对应的标签值，
+ */
 public class MainActivity extends BaseActivity {
 
     Button btnEN;
@@ -22,14 +29,6 @@ public class MainActivity extends BaseActivity {
 //    List<AllView> allChild = new ArrayList<>();
     List<AllView> defaultLangs = new ArrayList<>();
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main);
-////        getAllViews(((ViewGroup)findViewById(android.R.id.content)).getChildAt(0));
-//
-//    }
-
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_main;
@@ -38,7 +37,15 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initWidget() {
         super.initWidget();
-        btnCN = findViewById(R.id.change_cn);
+        binding.getRoot().findViewById(R.id.change_cn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("click","click");
+                EventBus.getDefault().post(new ChangeLangEvent());
+            }
+        });
+        binding.setVariable(BR.lang, new Lang());
+//        btnCN = findViewById(R.id.change_cn);
         btnEN = findViewById(R.id.change_en);
         text = findViewById(R.id.lang_tv_text);
         btnDefault = findViewById(R.id.change_default);
@@ -47,28 +54,34 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
-        btnCN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView tv = (TextView) allChild.get(0).getView();
-                Log.e("langs",langs.get(0).getSource());
-                tv.setText(langs.get(0).getSource());
-            }
-        });
-        btnEN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView tv = (TextView) allChild.get(0).getView();
-                tv.setText(langs.get(0).getTarget());
-            }
-        });
-        btnDefault.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TextView tv = (TextView) allChild.get(0).getView();
-                tv.setText(allChild.get(0).getDefaultText());
-            }
-        });
+//        Log.e("viewType","simple"+btnCN.getClass().getSimpleName());
+//        Log.e("viewType","id"+btnCN.getId() + "");
+
+//        btnCN.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TextView tv = (TextView) allChild.get(0).getView();
+//                Log.e("langs",langs.get(0).getSource());
+//                tv.setText(langs.get(0).getSource());
+//            }
+//        });
+//        btnEN.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TextView tv = (TextView) allChild.get(0).getView();
+//                tv.setText(langs.get(0).getTarget());
+//            }
+//        });
+//        btnDefault.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                TextView tv = (TextView) allChild.get(0).getView();
+//                tv.setText(allChild.get(0).getDefaultText());
+//                Intent intent = new Intent();
+//                intent.setClass(MainActivity.this, SecondActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     //    @Override
@@ -118,4 +131,8 @@ public class MainActivity extends BaseActivity {
 //        }
 //        return allChildren;
 //    }
+
+    public void setTxt(View view,String type){
+
+    }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">multi_language</string>
+    <string name="title_activity_second">SecondActivity</string>
 </resources>
